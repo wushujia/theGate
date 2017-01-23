@@ -75,7 +75,7 @@ public class MainActivity extends FragmentActivity {
 		initView();
 		initSlidingMenu();
 		
-		AVObject testObject = new AVObject("TestObject");
+		/*AVObject testObject = new AVObject("TestObject");
         testObject.put("words","Hello World!");
         testObject.saveInBackground(new SaveCallback() {
             @Override
@@ -84,7 +84,7 @@ public class MainActivity extends FragmentActivity {
                     Log.d("saved","success!");
                 }
             }
-        });
+        });*/
 	}
 	/** 初始化layout控件*/
 	private void initView() {
