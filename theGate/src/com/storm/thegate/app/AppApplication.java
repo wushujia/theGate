@@ -2,12 +2,14 @@ package com.storm.thegate.app;
 
 import java.io.File;
 
+import com.avos.avoscloud.AVOSCloud;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.storm.thegate.utils.CrashHandler;
 
 import android.app.Application;
 import android.content.Context;
@@ -19,6 +21,10 @@ public class AppApplication extends Application {
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
+		
+		CrashHandler crashHandler = CrashHandler.getInstance();
+		crashHandler.init(getApplicationContext());
+		initAVOSCloud();
 		initImageLoader(getApplicationContext());
 	}
 
@@ -28,6 +34,13 @@ public class AppApplication extends Application {
 		super.onTerminate();
 		//整体摧毁的时候调用这个方法
 	}
+	
+	
+	private void initAVOSCloud(){
+		AVOSCloud.initialize(this,"czt9RSkyuBpmNH2H1mfG5bgS-gzGzoHsz","MTnX51Sp1gcwRkTOnX64VNA4");
+		AVOSCloud.setDebugLogEnabled(true);
+	}
+	
 	/** 初始化ImageLoader */
 	public static void initImageLoader(Context context) {
 		File cacheDir = StorageUtils.getOwnCacheDirectory(context, "topnews/Cache");//获取到缓存的目录地址

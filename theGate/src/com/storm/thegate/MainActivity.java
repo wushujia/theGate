@@ -2,6 +2,9 @@ package com.storm.thegate;
 
 import java.util.ArrayList;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.SaveCallback;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.storm.thegate.adapter.NewsFragmentPagerAdapter;
 import com.storm.thegate.bean.NewsClassify;
@@ -16,6 +19,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -70,6 +74,17 @@ public class MainActivity extends FragmentActivity {
 		mItemWidth = mScreenWidth / 7;// 一个Item宽度为屏幕的1/7
 		initView();
 		initSlidingMenu();
+		
+		AVObject testObject = new AVObject("TestObject");
+        testObject.put("words","Hello World!");
+        testObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(AVException e) {
+                if(e == null){
+                    Log.d("saved","success!");
+                }
+            }
+        });
 	}
 	/** 初始化layout控件*/
 	private void initView() {
