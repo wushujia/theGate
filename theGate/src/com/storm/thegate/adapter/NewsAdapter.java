@@ -211,7 +211,7 @@ public class NewsAdapter extends BaseAdapter {
 	}
 	/** 根据属性获取对应的资源ID  */
 	public int getAltMarkResID(int mark,boolean isfavor){
-		if(isfavor){
+		/*if(isfavor){
 			return R.drawable.ic_mark_favor;
 		}
 		switch (mark) {
@@ -227,7 +227,7 @@ public class NewsAdapter extends BaseAdapter {
 			return R.drawable.ic_mark_favor;
 		default:
 			break;
-		}
+		}*/
 		return -1;
 	}
 	
